@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oferta Exclusiva 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffffff; /* FUNDO BRANCO */
+    color:#333;
+}
+
+.container{
+    width:92%;
+    max-width:420px;
+    padding:45px 30px;
+    border-radius:25px;
+    background:#fff;
+    border:1px solid #ffd6f3;
+    box-shadow:0 20px 60px rgba(255,20,147,0.15);
+    text-align:center;
+}
+
+h1{
+    font-size:32px;
+    font-weight:900;
+    background:linear-gradient(90deg,#ff4fd8,#ff1493);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+p{
+    font-size:14px;
+    margin:15px 0 30px;
+    color:#666;
+}
+
+.progress-wrapper{
+    width:100%;
+    height:18px;
+    background:#f3f3f3;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff4fd8,#ff1493);
+    border-radius:50px;
+    box-shadow:0 0 15px rgba(255,20,147,0.4);
+    transition:width .3s;
+}
+
+.percent{
+    margin-top:15px;
+    font-size:26px;
+    font-weight:900;
+    color:#ff1493;
+}
+
+.timer{
+    margin-top:10px;
+    font-size:13px;
+    color:#888;
+}
+
+button{
+    margin-top:30px;
+    padding:16px;
+    width:100%;
+    border:none;
+    border-radius:50px;
+    font-weight:800;
+    font-size:16px;
+    cursor:not-allowed;
+    background:linear-gradient(90deg,#ff4fd8,#ff1493);
+    color:#fff;
+    opacity:0.5;
+    transition:.3s;
+}
+
+button.active{
+    cursor:pointer;
+    opacity:1;
+    box-shadow:0 15px 40px rgba(255,20,147,0.4);
+}
+
+button.active:hover{
+    transform:scale(1.05);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>OFERTA 2026</h1>
+    <p>Validando sua condição personalizada...</p>
+
+    <div class="progress-wrapper">
+        <div id="progress" class="progress"></div>
+    </div>
+
+    <div id="percent" class="percent">0%</div>
+    <div id="timer" class="timer">Aguarde...</div>
+
+    <button id="btn" onclick="redirect()">LIBERANDO...</button>
+</div>
+
+<script>
+let value = 0;
+const progress = document.getElementById("progress");
+const percent = document.getElementById("percent");
+const timer = document.getElementById("timer");
+const btn = document.getElementById("btn");
+
+let countdown = 4;
+
+const interval = setInterval(()=>{
+    value++;
+    progress.style.width = value + "%";
+    percent.innerText = value + "%";
+
+    if(value % 25 === 0 && countdown > 0){
+        countdown--;
+        timer.innerText = "Finalizando em " + countdown + "s...";
+    }
+
+    if(value >= 100){
+        clearInterval(interval);
+        percent.innerText = "PRONTO ✔";
+        timer.innerText = "Sua condição foi liberada!";
+        btn.classList.add("active");
+        btn.innerText = "CONTINUAR";
+    }
+
+},30);
+
+function redirect(){
+    if(value >= 100){
+        window.location.href = "https://keen-brioche-cd458a.netlify.app/";
+    }
+}
+</script>
+
+</body>
+</html>
