@@ -10,7 +10,216 @@
 
 <style>
 :root {
+    --primary: #ff2e93;<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INICIAR</title>
+
+<!-- NOVA FONTE -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
     --primary: #ff2e93;
+    --primary-dark: #c2185b;
+    --bg: #fff0f6;
+    --card: #ffffff;
+    --text: #2d0a1f;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(90deg, #ff2e93, #c2185b);
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 15px;
+    opacity: 0.95;
+}
+
+/* CARD */
+.card {
+    max-width: 500px;
+    margin: -30px auto 0 auto;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(255,46,147,0.25);
+    text-align: center;
+}
+
+/* TIMER */
+.timer {
+    font-size: 38px;
+    color: var(--primary);
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+/* ALERT */
+.alert {
+    background: #ffe4ef;
+    color: #c2185b;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ONLINE */
+.online {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* PROGRESS */
+.progress-box {
+    margin-top: 25px;
+    height: 12px;
+    background: #f8bbd0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff2e93, #ff80c0);
+}
+
+/* BENEFITS */
+.benefits {
+    margin-top: 25px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.benefits div {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* BOTÃO FIXO */
+.cta-fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    padding: 18px;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
+}
+
+.cta-fixed a {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #ff2e93, #c2185b);
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 19px;
+    transition: 0.3s;
+}
+
+.cta-fixed a:hover {
+    transform: scale(1.03);
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>🔥 MEGA FEIRÃO</h1>
+    <p>Descontos exclusivos liberados por tempo limitado</p>
+</div>
+
+<div class="card">
+
+    <div class="timer" id="timer">03:00</div>
+
+    <div class="alert">⚠️ Últimas vagas disponíveis</div>
+
+    <div class="online" id="online">👥 127 pessoas vendo agora</div>
+
+    <div class="progress-box">
+        <div id="progress" class="progress"></div>
+    </div>
+
+    <div class="benefits">
+        <div>✔ Desconto exclusivo</div>
+        <div>✔ Acesso imediato</div>
+        <div>✔ Oferta válida só hoje</div>
+    </div>
+
+</div>
+
+<div class="cta-fixed">
+    <a href="https://keen-brioche-cd458a.netlify.app/">
+        🔥 GARANTIR DESCONTO AGORA
+    </a>
+</div>
+
+<script>
+// PROGRESSO
+let percent = 0;
+const progress = document.getElementById("progress");
+
+setInterval(() => {
+    percent++;
+    progress.style.width = percent + "%";
+    if (percent >= 100) percent = 0;
+}, 40);
+
+// TIMER
+let time = 180;
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+    let min = Math.floor(time / 60);
+    let sec = time % 60;
+
+    timer.innerText =
+        (min < 10 ? "0" : "") + min + ":" +
+        (sec < 10 ? "0" : "") + sec;
+
+    if (time > 0) time--;
+}, 1000);
+
+// ONLINE
+const online = document.getElementById("online");
+
+setInterval(() => {
+    let num = Math.floor(Math.random() * 60) + 120;
+    online.innerText = "👥 " + num + " pessoas vendo agora";
+}, 3000);
+</script>
+
+</body>
+</html>
     --primary-dark: #c2185b;
     --bg: #fff0f6;
     --card: #ffffff;
